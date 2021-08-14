@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>YourName</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Enter your name & download pdf</h1>
+      <label htmlFor="name">Your Name</label>
+      <br />
+      <input type="text" id="name" />
+      <br />
+      <button onclick="generatePdf()">Download PDF</button>
+    </div>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+  </body>
+  <script>
+    const generatePdf = () => {
+      const inputName = document.getElementById("name").value;
+
+      if (inputName) {
+        window.jsPDF = window.jspdf.jsPDF;
+        const doc = new window.jsPDF();
+        console.log(doc);
+        doc.text(`My name is ${inputName}`, 10, 10);
+        doc.save("yourName.pdf");
+      } else {
+        alert("Please enter your name");
+      } 
+    };
+  </script>
+</html>
